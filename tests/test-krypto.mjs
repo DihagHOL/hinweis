@@ -13,7 +13,8 @@
 import { webcrypto } from "node:crypto";
 import { readFileSync } from "node:fs";
 
-globalThis.crypto = webcrypto;
+// Neuere Node-Versionen bringen crypto schon mit und lassen es nicht überschreiben.
+if (!globalThis.crypto) globalThis.crypto = webcrypto;
 
 // js/krypto.js ist eine Browserdatei ohne Import/Export – sie wird hier so
 // ausgewertet, wie der Browser sie sieht, damit genau der Code geprüft wird,
